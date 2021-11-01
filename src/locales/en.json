@@ -1,0 +1,23 @@
+{
+  "common": {
+    "accept": "Accept",
+    "cancel": "Cancel",
+    "search": "Search",
+    "addNote": "Add note"
+
+  },
+  "teamList": "Team List",
+  "team" : {
+    "addFavorite": "Do you wish to add <b>{name}</b> to favorites?",
+    "deleteFavorite": "Do you wish to remove <b>{name}</b> from favorites?",
+    "favorites": "My Favorite Teams"
+  },
+  "snackbar": {
+    "success": {
+      "teamadded": "Team added to favorite list"
+    },
+    "error": {
+      "teamlist": "Team list could not be obtained"
+    }
+  }
+}

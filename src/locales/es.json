@@ -1,0 +1,22 @@
+{
+  "common": {
+    "accept": "Aceptar",
+    "cancel": "Cancelar",
+    "search": "Buscar",
+    "addNote": "Añada una nota"
+  },
+  "teamList": "Listado de equipos",
+  "team" : {
+    "addFavorite": "¿Desea añadir el equipo <b>{name}</b> a favoritos?",
+    "deleteFavorite": "¿Desea eliminar el equipo <b>{name}</b> de favoritos?",
+    "favorites": "Mis equipos favoritos"
+  },
+  "snackbar": {
+    "success": {
+      "teamadded": "Se ha añadido el equipo a favoritos"
+    },
+    "error": {
+      "teamlist": "No se ha podido obtener el listado de equipos"
+    }
+  }
+}

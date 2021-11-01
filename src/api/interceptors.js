@@ -1,0 +1,9 @@
+import axios from 'axios'
+import store from '@/store/index'
+
+axios.interceptors.request.use((config) => {
+  config.headers.Authorization = 'Bearer '.concat(store.state.accessToken)
+  return config
+}, (error) => {
+  return Promise.reject(error)
+});

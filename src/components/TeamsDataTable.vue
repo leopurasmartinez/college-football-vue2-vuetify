@@ -8,7 +8,7 @@
       hide-details
     ></v-text-field>
 
-    <v-card>
+    <v-card class="mt-10">
       <v-data-table
         :headers="headers"
         :items="items"
@@ -31,9 +31,10 @@
 
         <template v-slot:[`item.actions`]="{ item }">
           <v-icon
+            :class="{'disable-events': item.isFavorite}"
             small
             class="mr-2"
-            @click.once="showDialog(item)"
+            @click="showDialog(item)"
             :color="item.isFavorite ? 'red' : 'grey'"
           >
             mdi-heart
@@ -56,8 +57,8 @@
       :isShowDialog="isShowDialog"
       :isShowTextarea='true'
       :text="$t('team.addFavorite', { name: selectedTeam.school })"
-      @dialog:accept="addTeamToFavorites"
-      @dialog:cancel="hideDialog()"
+      @accept="addTeamToFavorites"
+      @cancel="hideDialog()"
     >
     </SimpleDialog>
 
@@ -70,17 +71,18 @@ export default {
     SimpleDialog:() => import('@/components/SimpleDialog'),
   },
   props: {
-    items: { type: Array, required: false },
+    items: { type: Array, required: false, default: () => [] },
   },
   data () {
     return {
       headers: [
-        { text: 'Logos', align: 'center', value: 'logos' },
-        { text: 'School', align: 'start', value: 'school' },
-        { text: 'Mascot', value: 'mascot' },
-        { text: 'Color', value: 'color', sortable: false },
-        { text: 'Location', value: 'location.city' },
-        { text: 'Actions', value: 'actions', sortable: false },
+        { text: this.$t('teamHeaders.logos'), align: 'center', value: 'logos', sortable: false },
+        { text: this.$t('teamHeaders.school'), align: 'start', value: 'school' },
+        { text: this.$t('teamHeaders.mascot'), value: 'mascot' },
+        { text: this.$t('teamHeaders.color'), value: 'color', sortable: false },
+        { text: this.$t('teamHeaders.location'), value: 'location.city' },
+        { text: this.$t('teamHeaders.note'), value: 'note' },
+        { text: this.$t('common.actions'), value: 'actions', sortable: false },
       ],
       isShowDialog: false,
       search: '',
@@ -105,8 +107,14 @@ export default {
       this.isShowDialog = true
     },
     viewTeamInfo(team) {
-      this.$router.push({name: 'team', params: { name: team.school, team: team }})
+      this.globals.viewTeamInfo(team)
     }
   }
 }
 </script>
+
+<style scoped>
+  .disable-events {
+    pointer-events: none
+  }
+</style>

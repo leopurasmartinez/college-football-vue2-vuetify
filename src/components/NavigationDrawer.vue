@@ -32,7 +32,7 @@
     </v-navigation-drawer>
     <v-app-bar>
       <v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
-      <!-- <v-toolbar-title>My files</v-toolbar-title> -->
+      <v-toolbar-title>{{ $t($route.name) }}</v-toolbar-title>
     </v-app-bar>
 
     <v-container fluid class="mt-5">
@@ -61,8 +61,6 @@ export default {
         },
       ]
     }
-  },
-  props: {
-  },
+  }
 }
 </script>

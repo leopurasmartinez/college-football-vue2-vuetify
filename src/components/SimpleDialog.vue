@@ -5,17 +5,15 @@
       persistent
       scrollable
       min-width="290"
-      :max-width="$vuetify.breakpoint.smAndDown ? '50%' : '33%'"
+      :max-width="maxWidth"
       height="290"
     >
       <v-card>
         <v-card-title>
           {{ header }}
         </v-card-title>
-        <v-card-text
-          style="max-height:300px;"
-          class="text-center"
-        >
+        
+        <v-card-text class="text-center">
           <span v-html="text" />
         </v-card-text>
 
@@ -38,7 +36,7 @@
             text
             rounded
             color="error"
-            @click="$emit('dialog:cancel')"
+            @click="$emit('cancel')"
           >
             {{ $t('common.cancel')}}
           </v-btn>
@@ -60,20 +58,25 @@
 <script>
 export default {
   props: {
-    cancelable: { type: Boolean, default: true },
+    cancelable: { type: Boolean, required: false, default: true },
     isShowDialog: { type: Boolean, required: true },
     isShowTextarea: { type: Boolean, required: false, default: false },
     header: { type: String, required: false },
     text: { type: String, required: true },
   },
+  computed: {
+    maxWidth () {
+      return this.$vuetify.breakpoint.smAndDown ? '50%' : '33%'
+    }
+  },
   data () {
     return {
-      textareaText: ''
+      textareaText: '',
     }
   },
   methods: {
     accept() {
-      this.$emit('dialog:accept', this.textareaText)
+      this.$emit('accept', this.textareaText)
     }
   }
 }

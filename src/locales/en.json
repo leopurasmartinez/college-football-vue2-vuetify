@@ -3,21 +3,40 @@
     "accept": "Accept",
     "cancel": "Cancel",
     "search": "Search",
-    "addNote": "Add note"
-
+    "addNote": "Add note",
+    "actions": "Actions"
   },
   "teamList": "Team List",
   "team" : {
+    "info": "Team Information",
+    "teamColors": "Team Colors",
+    "alternateNames": "Alternate Names",
     "addFavorite": "Do you wish to add <b>{name}</b> to favorites?",
     "deleteFavorite": "Do you wish to remove <b>{name}</b> from favorites?",
-    "favorites": "My Favorite Teams"
+    "favorites": "My Favorite Teams",
+    "myFavorites": "No favorites | You have {number} favorite | You have {number} favorites"
+  },
+  "teamHeaders": {
+    "logos": "Logo",
+    "school" :"School",
+    "mascot": "Mascot",
+    "color": "Color",
+    "location": "Location",
+    "note": "Note",
+    "conference": "Conference",
+    "division": "Division",
+    "elevation": "Elevation",
+    "capacity": "Capacity",
+    "grass": "Grass",
+    "dome": "Dome"
   },
   "snackbar": {
     "success": {
       "teamadded": "Team added to favorite list"
     },
     "error": {
-      "teamlist": "Team list could not be obtained"
+      "teamlist": "Team list could not be obtained",
+      "noteam": "No information could be found"
     }
   }
 }

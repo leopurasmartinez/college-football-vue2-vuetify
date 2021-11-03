@@ -3,20 +3,40 @@
     "accept": "Aceptar",
     "cancel": "Cancelar",
     "search": "Buscar",
-    "addNote": "Añada una nota"
+    "addNote": "Añada una nota",
+    "actions": "Acciones"
   },
   "teamList": "Listado de equipos",
   "team" : {
+    "info": "Información del equipo",
+    "teamColors": "Colores del equipo",
+    "alternateNames": "Otros nombres",
     "addFavorite": "¿Desea añadir el equipo <b>{name}</b> a favoritos?",
     "deleteFavorite": "¿Desea eliminar el equipo <b>{name}</b> de favoritos?",
-    "favorites": "Mis equipos favoritos"
+    "favorites": "Mis equipos favoritos",
+    "myFavorites": "No tiene favoritos | Tiene {number} favorito | Tiene {number} favoritos"
+  },
+  "teamHeaders": {
+    "logos": "Logo",
+    "school" :"Nombre",
+    "mascot": "Mascota",
+    "color": "Color",
+    "location": "Lugar",
+    "note": "Nota",
+    "conference": "Conferencia",
+    "division": "División",
+    "elevation": "Altura",
+    "capacity": "Capacidad",
+    "grass": "Hierba",
+    "dome": "Techo"
   },
   "snackbar": {
     "success": {
       "teamadded": "Se ha añadido el equipo a favoritos"
     },
     "error": {
-      "teamlist": "No se ha podido obtener el listado de equipos"
+      "teamlist": "No se ha podido obtener el listado de equipos",
+      "noteam": "No se ha encontrado información"
     }
   }
 }

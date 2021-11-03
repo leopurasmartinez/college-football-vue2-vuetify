@@ -1,10 +1,10 @@
 <template>
   <div>
-    <h1>{{ $t($route.name) }}</h1>
-      <teams-data-table
-        :items="teams"
-      >
-      </teams-data-table>
+    <teams-data-table
+      v-if="teams.length > 0"
+      :items="teams"
+    >
+    </teams-data-table>
   </div>
 </template>
 
@@ -19,12 +19,8 @@ export default {
     ...mapState(['teams']),
     ...mapMutations(['setTeams'])
   },
-  data () {
-    return {
-    }
-  },
   created() {
-    if (!localStorage.getItem('vuex')) {
+    if (this.teams.length == 0) {
       this.getTeams()
     }
   },
@@ -32,10 +28,7 @@ export default {
     async getTeams() {
       try {
         let { data } = await api.teams()
-        data.forEach(element => {
-          element.isFavorite = false
-        });
-        this.$store.commit('setTeams', data)
+        this.$store.commit('setTeams', this.addFavoriteTeamProperty(data))
       } catch (error) {
         this.EventBus.$emit('showSnackbar', {
           snackbarMessage: this.$t('snackbar.error.teamlist'),
@@ -43,6 +36,12 @@ export default {
         });
       }
     },
+    addFavoriteTeamProperty(teams) {
+      teams.forEach(team => {
+        team.isFavorite = false
+      });
+      return teams
+    }
   }
 }
 </script>

@@ -1,17 +1,16 @@
 <template>
   <div>
-    <h1>{{ $t($route.name) }}</h1>
-      <v-card-text>Tiene {{ favoriteTeams.length }} favoritos</v-card-text>
+    <v-card-text>{{ $tc('team.myFavorites', favoriteTeams.length, {'number': favoriteTeams.length})}}</v-card-text>
 
-      <v-text-field
-        v-model="search"
-        append-icon="mdi-magnify"
-        :label="$t('common.search')"
-        single-line
-        hide-details
-      ></v-text-field>
-      
-    <v-card>
+    <v-text-field
+      v-model="search"
+      append-icon="mdi-magnify"
+      :label="$t('common.search')"
+      single-line
+      hide-details
+    ></v-text-field>
+    
+    <v-card class="mt-10">
       <v-data-table
         :headers="headers"
         :items="favoriteTeams"
@@ -56,11 +55,11 @@
     <SimpleDialog
       :isShowDialog="isShowDialog"
       :text="$t('team.deleteFavorite', { name: selectedTeam.school })"
-      @dialog:accept="deleteFavorite"
-      @dialog:cancel="hideDialog()"
+      @accept="deleteFavorite"
+      @cancel="hideDialog()"
     >
     </SimpleDialog>
-      
+    
   </div>
 </template>
 
@@ -73,13 +72,13 @@ export default {
   data () {
     return {
       headers: [
-        { text: 'Logos', align: 'center', value: 'logos' },
-        { text: 'School', align: 'start', value: 'school' },
-        { text: 'Mascot', value: 'mascot' },
-        { text: 'Color', value: 'color', sortable: false },
-        { text: 'Location', value: 'location.city' },
-        { text: 'Note', value: 'note' },
-        { text: 'Actions', value: 'actions', sortable: false },
+        { text: this.$t('teamHeaders.logos'), align: 'center', value: 'logos', sortable: false },
+        { text: this.$t('teamHeaders.school'), align: 'start', value: 'school' },
+        { text: this.$t('teamHeaders.mascot'), value: 'mascot' },
+        { text: this.$t('teamHeaders.color'), value: 'color', sortable: false },
+        { text: this.$t('teamHeaders.location'), value: 'location.city' },
+        { text: this.$t('teamHeaders.note'), value: 'note' },
+        { text: this.$t('common.actions'), value: 'actions', sortable: false },
       ],
       isShowDialog: false,
       search: '',
@@ -91,7 +90,7 @@ export default {
   },
   methods: {
     viewTeamInfo(team) {
-      this.$router.push({name: 'team', params: { name: team.school, team: team }})
+      this.globals.viewTeamInfo(team)
     },
     deleteFavorite() {
       this.$store.commit('removeTeamFromFavorites', this.selectedTeam)

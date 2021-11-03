@@ -11,17 +11,14 @@ const routes = [
     component: TeamList
   },
   {
-    path: '/team/:name',
-    name: 'team',
+    path: '/team/',
+    name: 'team.info',
     component: () => import('@/views/TeamInfo'),
     props: true
   },
   {
     path: '/favoriteteams',
     name: 'team.favorites',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
     component: () => import('@/views/FavoriteTeams.vue')
   }
 ]
